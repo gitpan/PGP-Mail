@@ -11,3 +11,6 @@ me patches, ditto.
 Consider it Alpha-quality software, however, but Alpha quality that
 works well enough for the simple job it currently does. See the
 perldoc for more information.
+
+Versions before 1.6 may encounter obscure line ending bugs where signatures
+fail to verify properly.

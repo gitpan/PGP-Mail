@@ -32,7 +32,7 @@ signature.
 
 use vars qw($VERSION);
 
-$VERSION=('$Revision: 1.5 $'=~/(\d+\.\d+)/)[0];
+$VERSION=('$Revision: 1.7 $'=~/(\d+\.\d+)/)[0];
 
 =head2 my I<$pgpmail>=B<new> PGP::Mail(I<$mesg>, I<$args>);
 
@@ -94,7 +94,7 @@ sub init {
     my $data = shift;
     my $args = shift || {};
 
-    my @lines=map {$_."\n"} split /\n/, $data;
+    my @lines=map {$_."\n"} split /\r?\n/, $data;
 
     my @header=();
     my $finished=0;
@@ -230,14 +230,16 @@ sub mimepgp {
 	    next;
 	}
 	elsif($state eq "data") {
-	    $sigdata.=$line;
+	    my $l=$line;
+	    chomp $l;
+	    $sigdata.=$l."\r\n";
 	}
 	elsif($state eq "sig") {
 	    $signature.=$line;
 	}
     }
     chomp $signature;
-    chomp $sigdata;
+    $sigdata=~s/\r\n$//;
 
     my $parser=new MIME::Parser;
     $parser->output_to_core(1);
