@@ -15,9 +15,9 @@ PGP::Mail - Signature checking for PGP-signed mail messages
 
   use PGP::Mail;
   my $pgpmail=new PGP::Mail($mail, {default-keyring=>"kr.gpg"});
-  $status=$pgpmail->status;
-  $keyid=$pgpmail->keyid;
-  $data=$pgpmail->data;
+  $status=$pgpmail->status();
+  $keyid=$pgpmail->keyid();
+  $data=$pgpmail->data();
 
 =head1 DESCRIPTION
 
@@ -32,7 +32,7 @@ signature.
 
 use vars qw($VERSION);
 
-$VERSION=('$Revision: 1.4 $'=~/(\d+\.\d+)/)[0];
+$VERSION=('$Revision: 1.5 $'=~/(\d+\.\d+)/)[0];
 
 =head2 my I<$pgpmail>=B<new> PGP::Mail(I<$mesg>, I<$args>);
 

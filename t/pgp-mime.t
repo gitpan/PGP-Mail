@@ -44,7 +44,7 @@ print "ok 4\n";
 
 $data=~s/create the sig/create the sog/;
 
-$pgp=new PGP::Mail($data);
+$pgp=new PGP::Mail($data,$hash);
 
 if($pgp->status ne "bad") {
     print "not ";

@@ -42,7 +42,7 @@ print "ok 4\n";
 
 $data=~s/test message/tost message/;
 
-$pgp=new PGP::Mail($data);
+$pgp=new PGP::Mail($data, $hash);
 
 if($pgp->status ne "bad") {
     print "not ";
