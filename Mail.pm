@@ -32,13 +32,14 @@ signature.
 
 use vars qw($VERSION);
 
-$VERSION=('$Revision: 1.3 $'=~/(\d+\.\d+)/)[0];
+$VERSION=('$Revision: 1.4 $'=~/(\d+\.\d+)/)[0];
 
 =head2 my I<$pgpmail>=B<new> PGP::Mail(I<$mesg>, I<$args>);
 
 Creates a new PGP::Mail object using the RFC2822 message specified in
 I<$mesg>. It will do the signature verification itself. I<$args> is a
-hashref which gets passed to GnuPG::Interface's options.
+hashref which gets passed to GnuPG::Interface's options. It is particularly
+worth looking at L<GnuPG::Options> for this.
 
 =cut
 
@@ -298,7 +299,7 @@ Matthew Byng-Maddick E<lt>mbm@colondot.netE<gt>
 
 =head1 SEE ALSO
 
-L<perl>, L<GnuPG::Interface>, L<MIME::Tools>.
+L<perl>, L<GnuPG::Interface>, L<GnuPG::Options>, L<MIME::Tools>.
 
 =cut
 

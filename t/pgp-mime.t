@@ -5,7 +5,19 @@ print "1..5\nok 1\n";
 my $data=join "",<DATA>;
 close DATA;
 
-my $pgp=new PGP::Mail($data);
+my $hash={
+	"no_options" => 1,
+	"extra_args" =>
+	    [
+		"--no-default-keyring",
+		"--keyring" => "t/mbm-pgp.pub",
+		"--secret-keyring" => "t/mbm-pgp.sec",
+		"--keyserver-options" => "no-auto-key-retrieve",
+	    ],
+	"always_trust" => 1,
+	};
+
+my $pgp=new PGP::Mail($data, $hash);
 
 if($pgp->status ne "good") {
     print "not ";
